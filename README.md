@@ -1,4 +1,4 @@
-# over-under-2023-ai-training-sim
+# over-under-ai-training-sim
 
 ### Currently Nonfunctional
 
