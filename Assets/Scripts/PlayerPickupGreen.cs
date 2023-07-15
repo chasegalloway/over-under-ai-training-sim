@@ -19,18 +19,6 @@ public class PlayerPickupGreen : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (pickedObjects.Count == 0 && !isTeleporting && Input.GetKeyDown(KeyCode.P)) // Change KeyCode.P to the desired input key for picking up
-        {
-            if (other.gameObject.name == "Green Triball")
-            {
-                pickedObjects.Add(other.gameObject);
-                other.gameObject.SetActive(false); // Disable the object temporarily
-            }
-        }
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "Green Triball")
@@ -45,7 +33,7 @@ public class PlayerPickupGreen : MonoBehaviour
 
     private void Update()
     {
-        if (pickedObjects.Count > 0 && Input.GetKeyDown(KeyCode.P)) // Change KeyCode.P to the desired input key for dropping
+        if (pickedObjects.Count > 0 && Input.GetKeyDown(KeyCode.P)) // Change KeyCode.P to the desired input key for picking up
         {
             if (!isTeleporting)
             {
@@ -83,5 +71,18 @@ public class PlayerPickupGreen : MonoBehaviour
             pickedObject.transform.parent = null;
         }
         pickedObjects.Clear();
+    }
+
+    private void LateUpdate()
+    {
+        if (isTeleporting)
+        {
+            foreach (GameObject pickedObject in pickedObjects)
+            {
+                Vector3 targetPosition = transform.position + offset;
+                targetPosition.y = pickedObject.transform.position.y; // Maintain the same Y position as the object
+                pickedObject.transform.position = targetPosition;
+            }
+        }
     }
 }
