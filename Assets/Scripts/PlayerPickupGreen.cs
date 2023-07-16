@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerPickupGreen : MonoBehaviour
 {
-    private List<GameObject> pickedObjects = new List<GameObject>(); // List of objects the player is currently picking up
+    private GameObject pickedObject; // The object the player is currently picking up
     private bool isTeleporting; // Flag to indicate if teleportation is happening
     private Vector3 offset = new Vector3(0f, 1f, 0f); // Offset for the picked object position
 
@@ -11,73 +11,59 @@ public class PlayerPickupGreen : MonoBehaviour
     {
         if (other.gameObject.name == "Green Triball")
         {
-            if (!pickedObjects.Contains(other.gameObject) && !isTeleporting)
+            if (pickedObject == null && !isTeleporting)
             {
-                pickedObjects.Add(other.gameObject);
-                other.gameObject.SetActive(false); // Disable the object temporarily
+                pickedObject = other.gameObject;
+                pickedObject.SetActive(false); // Disable the object temporarily
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Green Triball")
+        if (other.gameObject == pickedObject)
         {
-            if (pickedObjects.Contains(other.gameObject) && !isTeleporting)
-            {
-                pickedObjects.Remove(other.gameObject);
-                other.gameObject.SetActive(true); // Enable the object again
-            }
+            pickedObject = null;
         }
     }
 
     private void Update()
     {
-        if (pickedObjects.Count > 0 && Input.GetKeyDown(KeyCode.P)) // Change KeyCode.P to the desired input key for picking up
+        if (pickedObject == null && Input.GetKeyDown(KeyCode.P)) // Change KeyCode.P to the desired input key for picking up
         {
-            if (!isTeleporting)
+            Collider[] colliders = Physics.OverlapSphere(transform.position, 0.5f); // Adjust the radius as needed
+            foreach (Collider collider in colliders)
             {
-                isTeleporting = true;
-                StartCoroutine(TeleportObjects());
+                if (collider.gameObject.name == "Green Triball")
+                {
+                    pickedObject = collider.gameObject;
+                    pickedObject.SetActive(false); // Disable the object temporarily
+                    break;
+                }
             }
         }
-        else if (pickedObjects.Count > 0 && Input.GetKeyDown(KeyCode.Return)) // Change KeyCode.Return to the desired input key for dropping
+        else if (pickedObject != null && Input.GetKeyDown(KeyCode.Return)) // Change KeyCode.Return to the desired input key for dropping
         {
-            StopTeleportation();
+            DropObject();
         }
     }
 
-    private System.Collections.IEnumerator TeleportObjects()
+    private void DropObject()
     {
-        while (isTeleporting)
-        {
-            foreach (GameObject pickedObject in pickedObjects)
-            {
-                Vector3 targetPosition = transform.position + offset;
-                targetPosition.y = transform.position.y; // Maintain the same Y position as the player
-                pickedObject.transform.position = targetPosition;
-            }
-            yield return null;
-        }
-    }
-
-    private void StopTeleportation()
-    {
-        isTeleporting = false;
-        foreach (GameObject pickedObject in pickedObjects)
+        if (pickedObject != null)
         {
             pickedObject.SetActive(true);
             pickedObject.transform.position = transform.position + offset;
             pickedObject.transform.parent = null;
+            pickedObject = null;
         }
-        pickedObjects.Clear();
     }
 
     private void LateUpdate()
     {
         if (isTeleporting)
         {
-            foreach (GameObject pickedObject in pickedObjects)
+            if (pickedObject != null)
             {
                 Vector3 targetPosition = transform.position + offset;
                 targetPosition.y = pickedObject.transform.position.y; // Maintain the same Y position as the object

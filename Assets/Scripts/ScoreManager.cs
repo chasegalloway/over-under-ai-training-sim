@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
     {
         if (collision.gameObject.name == "Green Triball")
         {
+            Debug.Log("Collision Detected");
+
             if (IsCollidingWithScoreZone(collision.gameObject, "RedScoreZone"))
             {
                 redScore++;
@@ -27,13 +29,33 @@ public class ScoreManager : MonoBehaviour
     {
         Collider objCollider = obj.GetComponent<Collider>();
         GameObject scoreZone = GameObject.Find(scoreZoneName);
+
+        if (scoreZone == null)
+        {
+            Debug.LogError("Score zone object not found: " + scoreZoneName);
+            return false;
+        }
+
         Collider scoreZoneCollider = scoreZone.GetComponent<Collider>();
+
+        if (scoreZoneCollider == null)
+        {
+            Debug.LogError("Collider not found on score zone object: " + scoreZoneName);
+            return false;
+        }
 
         Bounds objBounds = objCollider.bounds;
         Bounds scoreZoneBounds = scoreZoneCollider.bounds;
 
-        return objBounds.Intersects(scoreZoneBounds) ||
-               objBounds.Intersects(ExpandedBounds(scoreZoneBounds, collisionTolerance));
+        bool isColliding = objBounds.Intersects(scoreZoneBounds) ||
+            objBounds.Intersects(ExpandedBounds(scoreZoneBounds, collisionTolerance));
+
+        if (isColliding)
+        {
+            Debug.Log(obj.name + " is colliding with " + scoreZoneName);
+        }
+
+        return isColliding;
     }
 
     private Bounds ExpandedBounds(Bounds bounds, float amount)
