@@ -4901,7 +4901,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!154 &1197379183
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -4925,7 +4925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451b98c8ce067de4496030188369ebc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1250
+  _speed: 100
   _rb: {fileID: 1197379179}
 --- !u!114 &1197379188
 MonoBehaviour:
@@ -4949,6 +4949,68 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b278e7f14c5ba8479c20ab3e1e01d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1197379192
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197379177}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!114 &1197379193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197379177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373fb8654f6fae14ba5c52131fdac100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1197379195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197379177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c93937ccde6fd439bcace01bae88a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1197379196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197379177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c93937ccde6fd439bcace01bae88a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1197379197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197379177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd9d24ea9e356e42af8ba354de52116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!64 &1203819581
@@ -7254,6 +7316,7 @@ GameObject:
   - component: {fileID: 1868426754}
   - component: {fileID: 1868426753}
   - component: {fileID: 1868426752}
+  - component: {fileID: 1868426756}
   m_Layer: 0
   m_Name: BlueScoreZone
   m_TagString: Untagged
@@ -7281,7 +7344,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868426751}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7332,13 +7395,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868426751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2102, y: 57, z: 22}
+  m_LocalPosition: {x: -2010, y: 57, z: 22}
   m_LocalScale: {x: 500, y: 300, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868426756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868426751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ead50bcf59c70418584693b031615f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &1868605818
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7960,6 +8035,7 @@ GameObject:
   - component: {fileID: 1997097470}
   - component: {fileID: 1997097469}
   - component: {fileID: 1997097468}
+  - component: {fileID: 1997097472}
   m_Layer: 0
   m_Name: RedScoreZone
   m_TagString: Untagged
@@ -7987,7 +8063,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997097467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -8038,13 +8114,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997097467}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 916, y: 57, z: 22}
+  m_LocalPosition: {x: 791, y: 57, z: 22}
   m_LocalScale: {x: 500, y: 300, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1997097472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997097467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ead50bcf59c70418584693b031615f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &2002425973
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22977,7 +23065,7 @@ GameObject:
   - component: {fileID: 7600693741547507130}
   - component: {fileID: 742981268}
   m_Layer: 0
-  m_Name: Body1:429
+  m_Name: RedMatchloadZone
   m_TagString: field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24488,7 +24576,7 @@ GameObject:
   - component: {fileID: 3646535811593653472}
   - component: {fileID: 104339995}
   m_Layer: 0
-  m_Name: Body1:384
+  m_Name: BlueMatchloadZone
   m_TagString: field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65879,7 +65967,7 @@ GameObject:
   - component: {fileID: 4706650295491339611}
   - component: {fileID: 96933028}
   m_Layer: 0
-  m_Name: Body1:428
+  m_Name: BlueMatchloadZone
   m_TagString: field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66954,7 +67042,7 @@ GameObject:
   - component: {fileID: 8875997292754870165}
   - component: {fileID: 1425894874}
   m_Layer: 0
-  m_Name: Body1:385
+  m_Name: RedMatchloadZone
   m_TagString: field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
