@@ -16333,7 +16333,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b143baf46c210646bf3114e082b24c7, type: 2}
+  - {fileID: 2100000, guid: 5dea65d390e8dd54c9fdc20246c17072, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16869,7 +16869,7 @@ GameObject:
   - component: {fileID: 919132149043396360}
   - component: {fileID: 1601295246}
   m_Layer: 0
-  m_Name: Full Field and Pieces v1
+  m_Name: Field
   m_TagString: field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

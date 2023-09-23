@@ -16905,7 +16905,7 @@ GameObject:
   - component: {fileID: 919132149043396360}
   - component: {fileID: 1601295246}
   m_Layer: 0
-  m_Name: Full Field and Pieces v1
+  m_Name: Field
   m_TagString: field
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
